@@ -14,11 +14,15 @@ Doctrix is a smart and user-friendly doctor appointment booking app designed to 
 🔄 Doctrix offers a complete healthcare experience from booking to medicine delivery.
 
 🖼️ Screenshots of the App
+
 🚀 Splash Screen
+
 ![WhatsApp Image 2025-06-24 at 20 19 27_a1039901](https://github.com/user-attachments/assets/01be45a7-cca2-4237-b4a8-cbeadb157501)
 👋 Onboarding Screen
+
 ![WhatsApp Image 2025-06-24 at 20 19 27_558217c1](https://github.com/user-attachments/assets/3300276a-ccb3-49b7-bda9-5e8405b2a74c)
 🔑 Login Screen
+
 ![WhatsApp Image 2025-06-24 at 20 19 28_411d0d48](https://github.com/user-attachments/assets/c1bfd9bb-1403-48cc-83bc-68a3fd3f8f19)
 📝 Signup Screen
 ![WhatsApp Image 2025-06-24 at 20 19 29_51c2a22a](https://github.com/user-attachments/assets/826b7c94-5b8a-4118-aae7-e8ea70caf175)
