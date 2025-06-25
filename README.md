@@ -1,4 +1,4 @@
-💊 Doctrix - Doctor Appointment Booking App
+[Doctrinix.users.json](https://github.com/user-attachments/files/20896198/Doctrinix.users.json)💊 Doctrix - Doctor Appointment Booking App
 Doctrix is a smart and user-friendly doctor appointment booking app designed to simplify healthcare access for everyone. The app allows users to sign up and sign in securely, providing personalized access to healthcare services. With features ranging from doctor selection and medicine ordering to profile management, Doctrix offers a seamless digital healthcare experience.
 
 🩺 App Features (One-liner Highlights)
@@ -78,3 +78,11 @@ https://github.com/user-attachments/assets/dfd35290-42cd-4d84-ba6c-c0cfde62b8d2
 🟢 MongoDB Integration
 
 ![image](https://github.com/user-attachments/assets/5ed873ea-e285-4785-8dcc-e7d21c8ef915)
+
+Mongo Databases
+>[Doctrinix.users.json](https://github.com/user-attachments/files/20896218/Doctrinix.users.json)
+>[Doctrinix.pharmacyitems.json](https://github.com/user-attachments/files/20896219/Doctrinix.pharmacyitems.json)
+>[Doctrinix.bookings.json](https://github.com/user-attachments/files/20896221/Doctrinix.bookings.json)
+>[Doctrinix.doctors.json](https://github.com/user-attachments/files/20896220/Doctrinix.doctors.json)
+
+
