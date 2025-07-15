@@ -1,98 +1,123 @@
-[Doctrinix.users.json](https://github.com/user-attachments/files/20896198/Doctrinix.users.json)💊 Doctrix - Doctor Appointment Booking App
-Doctrix is a smart and user-friendly doctor appointment booking app designed to simplify healthcare access for everyone. The app allows users to sign up and sign in securely, providing personalized access to healthcare services. With features ranging from doctor selection and medicine ordering to profile management, Doctrix offers a seamless digital healthcare experience.
+# 🏥 Doctrinix - Doctor Appointment Booking App
 
-🩺 App Features (One-liner Highlights)
-📱 Doctrix is a smart doctor appointment booking app for easy healthcare access.
-🔐 Users can sign up and sign in securely to access personalized services.
-🚀 A modern splash screen appears when the app is launched.
-👣 A helpful onboarding screen guides users through the app’s features.
-🏠 The Home screen allows users to browse and book doctors by specialty.
-💊 Users can add medicines to a cart and order them directly from the app.
-👤 The app includes a profile page to view and update user information.
-✏️ Users can edit their profile, including personal and contact details.
-📅 Booking history and upcoming appointments are easily accessible.
-🔄 Doctrix offers a complete healthcare experience from booking to medicine delivery.
+Doctrinix is an open-source, smart and user-friendly **doctor appointment booking** app designed to simplify healthcare access for patients. It offers seamless booking, browsing doctors by department, viewing doctor profiles, and managing appointments securely.
 
-Mongo Databases
->[Doctrinix.users.json](https://github.com/user-attachments/files/20896218/Doctrinix.users.json)
->
->[Doctrinix.pharmacyitems.json](https://github.com/user-attachments/files/20896219/Doctrinix.pharmacyitems.json)
->
->[Doctrinix.bookings.json](https://github.com/user-attachments/files/20896221/Doctrinix.bookings.json)
->
->[Doctrinix.doctors.json](https://github.com/user-attachments/files/20896220/Doctrinix.doctors.json)
->
+<div align="center">
+  <img src="<ADD_HOME_SCREEN_IMAGE>" width="200"/>
+  <img src="<ADD_DOCTOR_DETAIL_IMAGE>" width="200"/>
+  <img src="<ADD_BOOKING_SCREEN_IMAGE>" width="200"/>
+</div>
 
-🖼️ Screenshots of the App
+---
 
-🚀 Splash Screen
+## 🚀 Features
 
-![WhatsApp Image 2025-06-24 at 20 19 27_a1039901](https://github.com/user-attachments/assets/01be45a7-cca2-4237-b4a8-cbeadb157501)
+- 📲 User Sign Up and Login (secure auth)
+- 🔍 Browse doctors by department
+- 🧑‍⚕️ View doctor profile with expertise & reviews
+- 📅 Book an appointment for specific date and time
+- 📖 Booking history with past & upcoming visits
+- 🛡 Secure backend with MongoDB & Express
+- ⚙️ Role-based access (Admin & User Support - optional)
 
-👋 Onboarding Screen
+## 📱 Screenshots (Column View)
 
-![WhatsApp Image 2025-06-24 at 20 19 27_558217c1](https://github.com/user-attachments/assets/3300276a-ccb3-49b7-bda9-5e8405b2a74c)
+| Splash Screen | Onboarding Screen |  |
+|----------------|--------------------|--|
+| <img src="https://github.com/user-attachments/assets/01be45a7-cca2-4237-b4a8-cbeadb157501" width="200"/> | <img src="https://github.com/user-attachments/assets/3300276a-ccb3-49b7-bda9-5e8405b2a74c" width="200"/> |  |
 
-🔑 Login Screen
+| Login Screen | Home Screen | Doctor Profile |
+|--------------|-------------|----------------|
+| <img src="https://github.com/user-attachments/assets/c1bfd9bb-1403-48cc-83bc-68a3fd3f8f19" width="200"/> | <img src="https://github.com/user-attachments/assets/73e5442e-999f-4811-84cb-2674934c38ad" width="200"/> | <img src="https://github.com/user-attachments/assets/c6c5f440-ef4e-444f-8736-bd4fc54c28d5" width="200"/> |
 
-![WhatsApp Image 2025-06-24 at 20 19 28_411d0d48](https://github.com/user-attachments/assets/c1bfd9bb-1403-48cc-83bc-68a3fd3f8f19)
+| Booking Screen | My Appointments | Signup Screen |
+|----------------|------------------|-----------------|
+| <img src="https://github.com/user-attachments/assets/ff8fbee9-d587-4481-930f-13fa9680c3ec" width="200"/> | <img src="https://github.com/user-attachments/assets/ead6e2a9-bcdc-4ef2-89ce-194c3a9d39da" width="200"/> | <img src="https://github.com/user-attachments/assets/826b7c94-5b8a-4118-aae7-e8ea70caf175" width="200"/> |
 
-📝 Signup Screen
+| Saved Doctors | Profile Screen | Edit Profile |
+|----------------|----------------|----------------|
+| <img src="https://github.com/user-attachments/assets/75bb43b8-6287-490b-9c03-74c51fe069ac" width="200"/> | <img src="https://github.com/user-attachments/assets/bb0d5da4-156d-46c7-a745-90218af9d31c" width="200"/> | <img src="https://github.com/user-attachments/assets/6d627fb4-d68c-439e-b284-043a4a5c3969" width="200"/> |
 
-![WhatsApp Image 2025-06-24 at 20 19 29_51c2a22a](https://github.com/user-attachments/assets/826b7c94-5b8a-4118-aae7-e8ea70caf175)
+| Medicine Book | Medicine Cart | Doctor List |
+|----------------|----------------|----------------|
+| <img src="https://github.com/user-attachments/assets/b35fc8f3-f58d-4b35-81c0-93db2f99c225" width="200"/> | <img src="https://github.com/user-attachments/assets/ef4883df-d07b-413e-b94a-f7424791403d" width="200"/> | <img src="https://github.com/user-attachments/assets/ad0a5365-fbbe-49de-b0d5-6d8909f0df13" width="200"/> |
 
-🏠Home Screen
-
-![WhatsApp Image 2025-06-24 at 20 19 31_06c5c43a](https://github.com/user-attachments/assets/73e5442e-999f-4811-84cb-2674934c38ad)
-
-🧑‍⚕️ Doctor List Screen
-
-![WhatsApp Image 2025-06-24 at 20 19 31_a15a4498](https://github.com/user-attachments/assets/ad0a5365-fbbe-49de-b0d5-6d8909f0df13)
-
-📄 Doctor Detail Screen
-
-![WhatsApp Image 2025-06-24 at 20 42 17_9986d7f6](https://github.com/user-attachments/assets/c6c5f440-ef4e-444f-8736-bd4fc54c28d5)
-
-📅 Booking Screen
-
-![WhatsApp Image 2025-06-24 at 20 19 32_645c6b5e](https://github.com/user-attachments/assets/ff8fbee9-d587-4481-930f-13fa9680c3ec)
-
-📆 Appointment Screen
-
-![WhatsApp Image 2025-06-24 at 20 19 32_701eb412](https://github.com/user-attachments/assets/ead6e2a9-bcdc-4ef2-89ce-194c3a9d39da)
-
-💊 Medicine Book Screen
-
-![WhatsApp Image 2025-06-24 at 20 19 33_eac00bbb](https://github.com/user-attachments/assets/b35fc8f3-f58d-4b35-81c0-93db2f99c225)
-
-🛒 Medicine Cart Screen
-
-![WhatsApp Image 2025-06-24 at 20 19 34_0c7e5ce4](https://github.com/user-attachments/assets/ef4883df-d07b-413e-b94a-f7424791403d)
-
-💾 Saved Doctor Screen
-
-![WhatsApp Image 2025-06-24 at 20 19 33_d19238e9](https://github.com/user-attachments/assets/75bb43b8-6287-490b-9c03-74c51fe069ac)
-
-👤 Profile Screen
-
-![WhatsApp Image 2025-06-24 at 20 19 32_5878fcc9](https://github.com/user-attachments/assets/bb0d5da4-156d-46c7-a745-90218af9d31c)
-
-✏️ Edit Profile Screen
-
-![WhatsApp Image 2025-06-24 at 20 19 33_b639baa2](https://github.com/user-attachments/assets/6d627fb4-d68c-439e-b284-043a4a5c3969)
-
-🎥 Final Demo Video
-
-https://github.com/user-attachments/assets/dfd35290-42cd-4d84-ba6c-c0cfde62b8d2
-
-🟢 MongoDB Integration
-
-![image](https://github.com/user-attachments/assets/5ed873ea-e285-4785-8dcc-e7d21c8ef915)
-
-Mongo Databases
->[Doctrinix.users.json](https://github.com/user-attachments/files/20896218/Doctrinix.users.json)
->[Doctrinix.pharmacyitems.json](https://github.com/user-attachments/files/20896219/Doctrinix.pharmacyitems.json)
->[Doctrinix.bookings.json](https://github.com/user-attachments/files/20896221/Doctrinix.bookings.json)
->[Doctrinix.doctors.json](https://github.com/user-attachments/files/20896220/Doctrinix.doctors.json)
+---
 
 
+
+## 🛠 Tech Stack
+
+### Frontend (React Native)
+- React Native (Expo CLI)
+- React Navigation
+- Axios
+- Context API
+
+### Backend (Node.js + Express)
+- Node.js
+- Express.js
+- MongoDB Atlas
+- Mongoose
+
+---
+
+## 📁 Folder Structure
+```bash
+doctor-app/
+├── backend/
+│ ├── models/
+│ ├── routes/
+│ ├── controllers/
+│ └── server.js
+├── frontend/
+│ ├── screens/
+│ ├── components/
+│ ├── navigation/
+│ └── App.js
+```
+
+---
+
+## 🧰 Installation & Setup
+
+### Backend Setup
+
+```bash
+cd backend
+npm install
+node server.js
+```
+💡 Make sure you set your MongoDB URI in .env or directly in server.js
+
+```bash
+cd frontend
+npm install
+npx expo start
+```
+🌐 MongoDB
+
+Hosted on MongoDB Atlas
+
+Database: Doctrinix
+
+Collections: users, doctors, bookings
+
+<img src="https://webimages.mongodb.com/_com_assets/cms/mongodb_logo1-76twgcu2dm.png" width="180"/>
+
+## 🤝 Contributing
+We welcome contributions! Feel free to fork the repo, create pull requests, or raise issues.
+
+```bash
+git clone https://github.com/yourusername/doctor-app.git
+```
+## 📜 License
+
+This project is licensed under the [MIT License](./LICENSE).
+
+## 📧 Contact
+For any queries or collaborations:
+
+Email: yourname@example.com
+
+GitHub: @lalitsingh789
