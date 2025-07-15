@@ -1,12 +1,6 @@
 # 🏥 Doctrinix - Doctor Appointment Booking App
 
-Doctrinix is an open-source, smart and user-friendly **doctor appointment booking** app designed to simplify healthcare access for patients. It offers seamless booking, browsing doctors by department, viewing doctor profiles, and managing appointments securely.
-
-<div align="center">
-  <img src="<ADD_HOME_SCREEN_IMAGE>" width="200"/>
-  <img src="<ADD_DOCTOR_DETAIL_IMAGE>" width="200"/>
-  <img src="<ADD_BOOKING_SCREEN_IMAGE>" width="200"/>
-</div>
+Doctrinix is an Reactive Native Application smart and user-friendly **doctor appointment booking** app designed to simplify healthcare access for patients. It offers seamless booking, browsing doctors by department, viewing doctor profiles, and managing appointments securely.
 
 ---
 
