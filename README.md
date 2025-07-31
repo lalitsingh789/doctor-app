@@ -56,7 +56,7 @@ Doctrinix is an Reactive Native Application smart and user-friendly **doctor app
 
 ---
 
-## 📁 Folder Structure
+## 📁 Project Folder Structure
 ```bash
 doctor-app/
 ├── backend/
@@ -89,13 +89,10 @@ cd frontend
 npm install
 npx expo start
 ```
-🌐 MongoDB
-
-Hosted on MongoDB Atlas
-
-Database: Doctrinix
-
-Collections: users, doctors, bookings
+## 🌐 MongoDB
+- Hosted on MongoDB Atlas
+- Database: Doctrinix
+- Collections: users, doctors, bookings
 
 <img src="https://webimages.mongodb.com/_com_assets/cms/mongodb_logo1-76twgcu2dm.png" width="180"/>
 
@@ -110,8 +107,5 @@ git clone https://github.com/yourusername/doctor-app.git
 This project is licensed under the [MIT License](./LICENSE).
 
 ## 📧 Contact
-For any queries or collaborations:
-
-Email: yourname@example.com
-
+### For any queries or collaborations:
 GitHub: @lalitsingh789
