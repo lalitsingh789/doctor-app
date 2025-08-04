@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import {
   View,
   Text,
@@ -9,14 +9,22 @@ import {
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-import { pharmacyStyles as styles } from '../styles/PharmacyStyles';
+
+import { pharmacyStyles } from '../styles/PharmacyStyles';
 import PharmacyList from '../components/pharmacy/pharmacyList';
-import { useCart } from '../contexts/CartContext'; 
+import { useCart } from '../contexts/CartContext';
+import { ThemeContext } from '../contexts/ThemeContext';
+import themeColors from '../theme';
 
 const Pharmacy = () => {
   const [items, setItems] = useState([]);
   const navigation = useNavigation();
-  const { addToCart, cartItems } = useCart(); // ✅ Get cart actions
+  const { addToCart, cartItems } = useCart();
+
+  // Theme context
+  const { theme } = useContext(ThemeContext);
+  const colors = themeColors[theme];
+  const styles = pharmacyStyles(colors); // dynamically generated styles
 
   useEffect(() => {
     const fetchPharmacyItems = async () => {
@@ -44,7 +52,7 @@ const Pharmacy = () => {
   };
 
   const handleAddToCart = (item) => {
-    addToCart(item); // ✅ Global cart update + backend POST
+    addToCart(item);
     Alert.alert('Added to Cart', `${item.title} x${item.quantity} added to your cart.`);
   };
 
@@ -53,30 +61,16 @@ const Pharmacy = () => {
       {/* Header */}
       <View style={styles.header}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Ionicons name="arrow-back" size={24} color="#fff" />
+          <Ionicons name="arrow-back" size={24} color={colors.textOnPrimary} />
         </TouchableOpacity>
         <Text style={styles.title}>Doctrix Pharma</Text>
 
         {/* Cart with Badge */}
         <TouchableOpacity onPress={() => navigation.navigate('Cart')}>
-          <Ionicons name="cart-outline" size={24} color="#fff" />
+          <Ionicons name="cart-outline" size={24} color={colors.textOnPrimary} />
           {cartItems.length > 0 && (
-            <View
-              style={{
-                position: 'absolute',
-                top: -5,
-                right: -10,
-                backgroundColor: 'red',
-                borderRadius: 10,
-                width: 16,
-                height: 16,
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}
-            >
-              <Text style={{ color: '#fff', fontSize: 10 }}>
-                {cartItems.length}
-              </Text>
+            <View style={[styles.badge, { backgroundColor: colors.danger }]}>
+              <Text style={styles.badgeText}>{cartItems.length}</Text>
             </View>
           )}
         </TouchableOpacity>
@@ -85,8 +79,8 @@ const Pharmacy = () => {
       {/* Search Bar */}
       <TextInput
         placeholder="Search Medicines & Health Products"
+        placeholderTextColor={colors.placeholder}
         style={styles.searchInput}
-        placeholderTextColor="#888"
       />
 
       {/* Product List */}

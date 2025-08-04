@@ -1,22 +1,38 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from "react";
 import {
-  View, Text, ScrollView, TextInput, TouchableOpacity,
-  ActivityIndicator, Alert, SafeAreaView
-} from 'react-native';
-import { Picker } from '@react-native-picker/picker';
-import Icon from 'react-native-vector-icons/Ionicons';
-import { styles } from '../styles/EditProfileStyles';
-import { useUser } from '../contexts/UserContext';
+  View,
+  Text,
+  ScrollView,
+  TextInput,
+  TouchableOpacity,
+  ActivityIndicator,
+  Alert,
+  SafeAreaView,
+} from "react-native";
+import { Picker } from "@react-native-picker/picker";
+import Icon from "react-native-vector-icons/Ionicons";
+import { getEditProfileStyles } from "../styles/EditProfileStyles"; // <-- correct import
+import { useUser } from "../contexts/UserContext";
+import { ThemeContext } from "../contexts/ThemeContext";
+import themeColors from "../theme";
 
 const EditProfile = ({ route, navigation }) => {
   const { email } = route.params || {};
   const { setUser } = useUser();
   const [form, setForm] = useState({
-    firstname: '', lastname: '', address: '',
-    phone: '', gender: '', blood_group: ''
+    firstname: "",
+    lastname: "",
+    address: "",
+    phone: "",
+    gender: "",
+    blood_group: "",
   });
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
+
+  const { theme } = useContext(ThemeContext);
+  const colors = themeColors[theme];
+  const styles = getEditProfileStyles(theme); // <-- use here inside component
 
   const handleChange = (key, value) => setForm({ ...form, [key]: value });
 
@@ -28,10 +44,10 @@ const EditProfile = ({ route, navigation }) => {
         if (res.ok && data.user) {
           setForm(data.user);
         } else {
-          Alert.alert('Error', 'User not found');
+          Alert.alert("Error", "User not found");
         }
       } catch {
-        Alert.alert('Error', 'Failed to fetch user data');
+        Alert.alert("Error", "Failed to fetch user data");
       } finally {
         setLoading(false);
       }
@@ -40,25 +56,25 @@ const EditProfile = ({ route, navigation }) => {
   }, [email]);
 
   const handleSubmit = async () => {
-    if (!email) return Alert.alert('Error', 'Email is required');
+    if (!email) return Alert.alert("Error", "Email is required");
     setSubmitting(true);
     try {
       const payload = { email, ...form };
       const res = await fetch(`http://192.168.46.183:5000/api/auth/update`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
       const data = await res.json();
       if (res.ok) {
-        Alert.alert('Success', data.message);
+        Alert.alert("Success", data.message);
         setUser({ ...form, email });
         navigation.goBack();
       } else {
-        Alert.alert('Error', data.error);
+        Alert.alert("Error", data.error);
       }
     } catch {
-      Alert.alert('Error', 'Update failed');
+      Alert.alert("Error", "Update failed");
     } finally {
       setSubmitting(false);
     }
@@ -67,8 +83,8 @@ const EditProfile = ({ route, navigation }) => {
   if (loading) {
     return (
       <SafeAreaView style={styles.safeArea}>
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-          <ActivityIndicator size="large" color="#1877FF" />
+        <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+          <ActivityIndicator size="large" color={colors.primary} />
         </View>
       </SafeAreaView>
     );
@@ -76,7 +92,6 @@ const EditProfile = ({ route, navigation }) => {
 
   return (
     <SafeAreaView style={styles.safeArea}>
-      {/* Header */}
       <View style={styles.header}>
         <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
           <Icon name="arrow-back" style={styles.backIcon} />
@@ -84,16 +99,16 @@ const EditProfile = ({ route, navigation }) => {
         <Text style={styles.headerTitle}>Edit Profile</Text>
       </View>
 
-      {/* Content */}
       <ScrollView contentContainerStyle={styles.container}>
-        {['firstname', 'lastname', 'phone', 'address'].map((field) => (
+        {["firstname", "lastname", "phone", "address"].map((field) => (
           <View key={field} style={styles.inputGroup}>
             <Text style={styles.label}>{field.toUpperCase()}</Text>
             <TextInput
               value={form[field]}
               onChangeText={(val) => handleChange(field, val)}
               style={styles.input}
-              keyboardType={field === 'phone' ? 'phone-pad' : 'default'}
+              placeholderTextColor={colors.placeholder}
+              keyboardType={field === "phone" ? "phone-pad" : "default"}
             />
           </View>
         ))}
@@ -103,9 +118,9 @@ const EditProfile = ({ route, navigation }) => {
           <View style={styles.pickerWrapper}>
             <Picker
               selectedValue={form.gender}
-              onValueChange={(val) => handleChange('gender', val)}
+              onValueChange={(val) => handleChange("gender", val)}
               style={styles.picker}
-              dropdownIconColor="#0f172a"
+              dropdownIconColor={colors.text}
             >
               <Picker.Item label="Select Gender" value="" />
               <Picker.Item label="Male" value="Male" />
@@ -120,9 +135,9 @@ const EditProfile = ({ route, navigation }) => {
           <View style={styles.pickerWrapper}>
             <Picker
               selectedValue={form.blood_group}
-              onValueChange={(val) => handleChange('blood_group', val)}
+              onValueChange={(val) => handleChange("blood_group", val)}
               style={styles.picker}
-              dropdownIconColor="#0f172a"
+              dropdownIconColor={colors.text}
             >
               <Picker.Item label="Select Blood Group" value="" />
               <Picker.Item label="A+" value="A+" />
@@ -143,7 +158,7 @@ const EditProfile = ({ route, navigation }) => {
           style={[styles.submitButton, submitting && styles.buttonDisabled]}
         >
           {submitting ? (
-            <ActivityIndicator color="#fff" />
+            <ActivityIndicator color={colors.onPrimary} />
           ) : (
             <Text style={styles.submitText}>Save Changes</Text>
           )}
