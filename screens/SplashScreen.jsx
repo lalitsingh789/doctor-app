@@ -1,65 +1,42 @@
-import React, { useEffect } from 'react';
-import {
-  View,
-  Text,
-  Image,
-  Dimensions,
-  TouchableWithoutFeedback,
-} from 'react-native';
-import * as ExpoSplashScreen from 'expo-splash-screen';
-import { useFonts } from 'expo-font';
+import React, { useEffect, useContext } from "react";
+import { View, Text, Image, TouchableWithoutFeedback } from "react-native";
+import * as SplashScreen from "expo-splash-screen";
+import { useFonts } from "expo-font";
+import { ThemeContext } from "../contexts/ThemeContext";
+import themeColors from "../theme";
+import { splashStyles } from "../styles/SplashScreenStyles";
 
-const { width } = Dimensions.get('window');
-ExpoSplashScreen.preventAutoHideAsync();
+SplashScreen.preventAutoHideAsync();
 
-const SplashScreen = ({ navigation }) => {
+const SplashScreenComponent = ({ navigation }) => {
   const [fontsLoaded] = useFonts({
-    'Montserrat-Bold': require('../assets/fonts/Montserrat-Bold.ttf'),
+    "Montserrat-Bold": require("../assets/fonts/Montserrat-Bold.ttf"),
   });
+
+  const { theme } = useContext(ThemeContext);
+  const colors = themeColors[theme];
+  const styles = splashStyles(colors);
 
   useEffect(() => {
     if (fontsLoaded) {
-      ExpoSplashScreen.hideAsync();
+      SplashScreen.hideAsync();
     }
   }, [fontsLoaded]);
 
   if (!fontsLoaded) return null;
 
   return (
-    <TouchableWithoutFeedback onPress={() => navigation.replace('Onboarding')}>
-      <View
-        style={{
-          flex: 1,
-          backgroundColor: '#1877FF',
-          justifyContent: 'center',
-          alignItems: 'center',
-          paddingHorizontal: 30,
-        }}
-      >
+    <TouchableWithoutFeedback onPress={() => navigation.replace("Onboarding")}>
+      <View style={styles.container}>
         <Image
-          source={require('../assets/doc.png')}
+          source={require("../assets/doc.png")}
           resizeMode="contain"
-          style={{
-            width: width * 0.6,
-            height: width * 0.6,
-            marginBottom: 20,
-          }}
+          style={styles.logo}
         />
-        <Text
-          style={{
-            fontFamily: 'Montserrat-Bold',
-            fontSize: 20,
-            color: '#E6F0FF',
-            textAlign: 'center',
-            letterSpacing: 1,
-            paddingBottom: 20,
-          }}
-        >
-          
-        </Text>
+        <Text style={styles.title}>Tap to Continue</Text>
       </View>
     </TouchableWithoutFeedback>
   );
 };
 
-export default SplashScreen;
+export default SplashScreenComponent;

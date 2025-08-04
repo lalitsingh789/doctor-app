@@ -1,69 +1,88 @@
-import React, { useState } from 'react';
-import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
-import DoctorTabs from '../components/doctorDetail/DoctorTabs';
-import DoctorStats from '../components/doctorDetail/DoctorStats';
-import { styles } from '../styles/DoctorDetailStyles';
+import React, { useState, useContext } from "react";
+import {
+  View,
+  Text,
+  ScrollView,
+  TouchableOpacity,
+  StyleSheet,
+} from "react-native";
+import Icon from "react-native-vector-icons/Ionicons";
+import DoctorTabs from "../components/doctorDetail/DoctorTabs";
+import DoctorStats from "../components/doctorDetail/DoctorStats";
+import { getDoctorDetailStyles } from "../styles/DoctorDetailStyles";
+import { ThemeContext } from "../contexts/ThemeContext";
+import themeColors from "../theme";
 
 const DoctorDetail = ({ route, navigation }) => {
   const { doctor } = route.params;
-  const [activeTab, setActiveTab] = useState('Details');
+  const [activeTab, setActiveTab] = useState("Details");
+  const { theme } = useContext(ThemeContext);
+  const colors = themeColors[theme];
+  const styles = getDoctorDetailStyles(theme);
+
+  const renderList = (list, icon = "") =>
+    list.map((item, index) => (
+      <Text key={index} style={[localStyles.listItem, { color: colors.text }]}>
+        {icon} {item}
+      </Text>
+    ));
 
   const renderTabContent = () => {
-    const renderList = (list, icon = '') =>
-      list.map((item, index) => (
-        <Text key={index} style={{ marginBottom: 10, color: '#374151' }}>
-          {icon} {item}
-        </Text>
-      ));
-
     switch (activeTab) {
-      case 'Details':
+      case "Details":
         return (
-          <View style={{ padding: 20 }}>
-            <Text style={{ fontWeight: 'bold', fontSize: 16, marginBottom: 10 }}>About Me</Text>
-            <Text style={{ color: '#6B7280', marginBottom: 10 }}>{doctor.about}</Text>
+          <View style={localStyles.section}>
+            <Text style={[localStyles.sectionTitle, { color: colors.text }]}>About Me</Text>
+            <Text style={[localStyles.subText, { color: colors.textMuted }]}>
+              {doctor.about}
+            </Text>
 
-            <Text style={{ fontWeight: 'bold', fontSize: 16, marginBottom: 10 }}>Services</Text>
+            <Text style={[localStyles.sectionTitle, { color: colors.text }]}>Services</Text>
             {renderList(doctor.services)}
 
-            <Text style={{ fontWeight: 'bold', fontSize: 16, marginBottom: 10 }}>Expertise</Text>
+            <Text style={[localStyles.sectionTitle, { color: colors.text }]}>Expertise</Text>
             {renderList(doctor.expertise)}
 
-            <Text style={{ fontWeight: 'bold', fontSize: 16, marginBottom: 10 }}>Languages</Text>
+            <Text style={[localStyles.sectionTitle, { color: colors.text }]}>Languages</Text>
             {renderList(doctor.languages)}
           </View>
         );
 
-      case 'Address':
+      case "Address":
         return (
-          <View style={{ padding: 20 }}>
-            <Text style={{ color: '#6B7280', marginBottom: 10 }}>📍 {doctor.address}</Text>
-            <Text style={{ color: '#6B7280', marginBottom: 10 }}>📞 {doctor.contact_number}</Text>
-            <Text style={{ color: '#6B7280', marginBottom: 10 }}>📧 {doctor.email}</Text>
-            <Text style={{ color: '#6B7280', marginBottom: 10 }}>🕒 {doctor.availability}</Text>
+          <View style={localStyles.section}>
+            <Text style={[localStyles.subText, { color: colors.textMuted }]}>📍 {doctor.address}</Text>
+            <Text style={[localStyles.subText, { color: colors.textMuted }]}>📞 {doctor.contact_number}</Text>
+            <Text style={[localStyles.subText, { color: colors.textMuted }]}>📧 {doctor.email}</Text>
+            <Text style={[localStyles.subText, { color: colors.textMuted }]}>🕒 {doctor.availability}</Text>
           </View>
         );
 
-      case 'Reviews':
+      case "Reviews":
         return (
-          <View style={{ padding: 20, alignItems: 'center' }}>
-            <Text style={{ fontSize: 30, fontWeight: 'bold', color: '#f59e0b' }}>{doctor.rating}</Text>
-            <Text style={{ marginTop: 5, color: '#6B7280' }}>({doctor.review_count} Ratings)</Text>
+          <View style={[localStyles.section, { alignItems: "center" }]}>
+            <Text style={{ fontSize: 30, fontWeight: "bold", color: colors.warning }}>
+              {doctor.rating}
+            </Text>
+            <Text style={[localStyles.subText, { color: colors.textMuted }]}>
+              ({doctor.review_count} Ratings)
+            </Text>
             <TouchableOpacity style={{ marginTop: 15 }}>
-              <Text style={{ color: '#2563eb', fontWeight: 'bold' }}>View More Reviews ➔</Text>
+              <Text style={{ color: colors.primary, fontWeight: "bold" }}>
+                View More Reviews ➔
+              </Text>
             </TouchableOpacity>
           </View>
         );
 
-      case 'Education':
-        return <View style={{ padding: 20 }}>{renderList(doctor.education, '🎓')}</View>;
+      case "Education":
+        return <View style={localStyles.section}>{renderList(doctor.education, "🎓")}</View>;
 
-      case 'Experience':
-        return <View style={{ padding: 20 }}>{renderList(doctor.experience, '💼')}</View>;
+      case "Experience":
+        return <View style={localStyles.section}>{renderList(doctor.experience, "💼")}</View>;
 
-      case 'Awards':
-        return <View style={{ padding: 20 }}>{renderList(doctor.awards, '🏆')}</View>;
+      case "Awards":
+        return <View style={localStyles.section}>{renderList(doctor.awards, "🏆")}</View>;
 
       default:
         return null;
@@ -71,10 +90,10 @@ const DoctorDetail = ({ route, navigation }) => {
   };
 
   return (
-    <View style={{ flex: 1, backgroundColor: '#fff' }}>
+    <View style={[styles.container, { backgroundColor: colors.background }]}>
       <View style={styles.header}>
         <TouchableOpacity onPress={() => navigation.goBack()} style={styles.headerRow}>
-          <Icon name="arrow-back" size={22} color="#fff" />
+          <Icon name="arrow-back" size={22} color={colors.onPrimary} />
           <Text style={styles.headerText}>Doctor Details</Text>
         </TouchableOpacity>
       </View>
@@ -86,15 +105,22 @@ const DoctorDetail = ({ route, navigation }) => {
       </ScrollView>
 
       <TouchableOpacity
-        onPress={() => navigation.navigate('Book', { doctor })}
+        onPress={() => navigation.navigate("Book", { doctor })}
         style={styles.bookButton}
       >
         <Text style={styles.bookButtonText}>
-          Book Now: <Text style={{ fontWeight: 'bold' }}>₹ {doctor.consultation_fee}</Text>
+          Book Now: <Text style={{ fontWeight: "bold" }}>₹ {doctor.consultation_fee}</Text>
         </Text>
       </TouchableOpacity>
     </View>
   );
 };
+
+const localStyles = StyleSheet.create({
+  section: { padding: 20 },
+  sectionTitle: { fontWeight: "bold", fontSize: 16, marginBottom: 10 },
+  subText: { marginBottom: 10 },
+  listItem: { marginBottom: 10 },
+});
 
 export default DoctorDetail;
